@@ -1,0 +1,24 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    width: 120px;
+    height: 25px;
+    text-align: center;
+}
+
+.table_block, .id_submit_block {
+    text-align: center;
+}
+
+.table_block>table {
+    margin: auto;
+}
+
+ul {
+    text-align: left;
+    margin-left: 40%;
+    list-style: none;
+}

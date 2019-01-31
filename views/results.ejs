@@ -1,0 +1,36 @@
+<% include ./partials/header %>
+<div class="table_block">
+    <h1>Five days of weather forecast of <%= data.city.name %></h1>
+    <% var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; %>
+    <% var avgTemp = data.list[0].main.temp; %>
+    <% var counter = 1; %>
+    <% var today = (new Date(data.list[0].dt_txt)).getDay(); %>
+    <table>
+        <tr>
+            <% for(var i=today; i<=today+5; i++) { %>
+                <th> <%= days[i] ? days[ i ] : days[ i-7 ] %> </th>
+            <% } %>
+        </tr>
+    <tr>
+        <% for(i=1; i < data.list.length; i++) { %>    
+            <% var pre = (new Date(data.list[i-1].dt_txt)).getDay() %>
+            <% var curr = (new Date(data.list[i].dt_txt)).getDay() %>
+            <% if(pre === curr) { %>
+                <% counter++; %>
+                <% avgTemp += data.list[i].main.temp; %>
+            <% } else { %>
+                <td><%= Math.round(avgTemp/counter) - 273 %>&deg;C</td>
+                <% avgTemp = 0; %>
+                <% counter = 0; %>
+            <% } %>    
+            <% if(i === data.list.length-1) { %>
+                <td><%= Math.round(avgTemp/counter) - 273 %>&deg;C</td>
+            <% } %>
+        <% } %>
+    </tr>
+    </table>
+    <br>
+    <a href='/'>Check again.</a>
+</div>
+
+<% include ./partials/footer %>

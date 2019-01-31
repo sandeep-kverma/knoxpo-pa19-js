@@ -1,0 +1,21 @@
+<% include ./partials/header %>
+
+<div class="id_submit_block">
+    <h1>Please enter city ID</h1>
+    <h4>Below are Ids of some popular Indian cities...</h4>
+    <ul>
+        <li>Mumbai: <strong>1275339</strong></li>
+        <li>Delhi: <strong>1273294</strong></li>
+        <li>Kolkata: <strong>1275004</strong></li>
+        <li>Chennai: <strong>1264527</strong></li>
+        <li>Pune: <strong>1259229</strong></li>
+        <li><a href="http://bulk.openweathermap.org/sample/city.list.json.gz">For more cities...</a></li>
+    </ul>
+
+    <form action='/results' method='GET'>
+        <input type='text' placeholder='City Id' name='id' value='1275339' pattern= "[0-9]+" title="Numbers only" required>
+        <input type='submit' value='Submit'>
+    </form>
+</div>
+
+<% include ./partials/footer %>
